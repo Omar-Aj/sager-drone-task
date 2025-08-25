@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Logo from "@/public/images/logo.svg";
 import Link from "next/link";
+import { BellIcon, CaptureIcon, LanguageIcon } from "@/public/icons";
 
 export default function Header() {
   return (
@@ -16,21 +17,21 @@ export default function Header() {
       <div className="hidden grow justify-end gap-5 md:flex">
         <div className="flex items-center gap-5">
           <Image
-            src={"/icons/capture-icon.svg"}
+            src={CaptureIcon}
             alt="Capture Icon"
             width={24}
             height={24}
             className="pointer-events-none select-none"
           />
           <Image
-            src="/icons/language-icon.svg"
+            src={LanguageIcon}
             alt="Language Icon"
             width={24}
             height={24}
             className="pointer-events-none select-none"
           />
           <Image
-            src="/icons/bell-icon.svg"
+            src={BellIcon}
             alt="Bell Icon"
             width={24}
             height={24}
@@ -39,11 +40,11 @@ export default function Header() {
         </div>
         <div className="bg-inactive-status w-px" />
         <div className="text-sm">
-          <p className="text-header-color max-w-48 truncate">
-            Hello,{" "}
-            <span title="Mohammad Omar" className="font-bold">
-              Mohammad Omar
-            </span>
+          <p
+            title="Mohammad Omar"
+            className="text-header-color max-w-48 truncate"
+          >
+            Hello, <span className="font-bold">Mohammad Omar</span>
           </p>
           <p
             title="Technical Support"

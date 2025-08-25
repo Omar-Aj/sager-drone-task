@@ -22,7 +22,7 @@ export default function RootLayout({
         <Header />
         <div className="flex grow overflow-hidden">
           <Sidebar />
-          {children}
+          <div className="grow">{children}</div>
         </div>
       </body>
     </html>
