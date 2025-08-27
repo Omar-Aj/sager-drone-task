@@ -24,7 +24,7 @@ export default function Sidebar() {
   const pathName = usePathname();
 
   return (
-    <div className="flex w-32 flex-col overflow-y-auto">
+    <div className="flex w-32 shrink-0 flex-col overflow-y-auto">
       {navigationLinks.map(({ name, href, icon }, index) => {
         const isActive = pathName === href;
 
