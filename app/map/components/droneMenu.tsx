@@ -11,10 +11,10 @@ export default function DroneMenu({ children }: PropsType) {
   return (
     <>
       <div
-        className={`bg-primary absolute top-2.5 left-2.5 flex h-[calc(100%-20px)] w-[330px] flex-col pt-8 ${!isDroneListOpen && "hidden"}`}
+        className={`bg-primary absolute bottom-2.5 left-2.5 flex h-80 w-[calc(100%-20px)] flex-col pt-4 md:top-2.5 md:h-[calc(100%-20px)] md:w-[330px] md:pt-8 ${!isDroneListOpen && "hidden"}`}
       >
-        <div className="mb-9 flex shrink-0 justify-between px-5">
-          <h1 className="text-header-color text-xl font-bold uppercase">
+        <div className="mb-3 flex shrink-0 justify-between px-4 md:mb-9 md:px-5">
+          <h1 className="text-header-color font-bold uppercase md:text-xl">
             Drone Flying
           </h1>
           <button
@@ -24,16 +24,16 @@ export default function DroneMenu({ children }: PropsType) {
             <Image src={CancelIcon} alt="Close" />
           </button>
         </div>
-        <div className="flex shrink-0 gap-8 px-5">
+        <div className="flex shrink-0 gap-8 px-4 md:px-5">
           <button
             onClick={() => setDroneListTabIndex(0)}
-            className={`cursor-pointer border-b-[6px] pb-2.5 ${droneListTabIndex === 0 ? "text-header-color border-red-600" : "text-inactive-status border-transparent"}`}
+            className={`cursor-pointer border-b-[6px] pb-1 text-xs md:pb-2.5 md:text-base ${droneListTabIndex === 0 ? "text-header-color border-red-600" : "text-inactive-status border-transparent"}`}
           >
             Drones
           </button>
           <button
             onClick={() => setDroneListTabIndex(1)}
-            className={`cursor-pointer border-b-[6px] pb-2.5 ${droneListTabIndex === 1 ? "text-header-color border-red-600" : "text-inactive-status border-transparent"}`}
+            className={`cursor-pointer border-b-[6px] pb-1 text-xs md:pb-2.5 md:text-base ${droneListTabIndex === 1 ? "text-header-color border-red-600" : "text-inactive-status border-transparent"}`}
           >
             Flights History
           </button>

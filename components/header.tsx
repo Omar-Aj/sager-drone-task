@@ -5,13 +5,20 @@ import { BellIcon, CaptureIcon, LanguageIcon } from "@/public/icons";
 
 export default function Header() {
   return (
-    <header className="bg-color-secondary bg-secondary flex h-[72px] w-full shrink-0 items-center gap-2 px-4">
-      <Link href={"/"} className="felx shrink-0 items-center justify-center">
+    <header className="bg-color-secondary bg-secondary flex h-[40px] w-full shrink-0 items-center gap-2 px-4 md:h-[72px]">
+      <Link href={"/"} className="shrink-0">
+        <Image
+          src={Logo}
+          alt="Logo"
+          height={20}
+          priority
+          className="pointer-events-none select-none md:hidden"
+        />
         <Image
           src={Logo}
           alt="Logo"
           priority
-          className="pointer-events-none select-none"
+          className="pointer-events-none hidden select-none md:block"
         />
       </Link>
       <div className="hidden grow justify-end gap-5 md:flex">
