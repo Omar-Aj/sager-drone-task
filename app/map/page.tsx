@@ -24,7 +24,6 @@ export default function Page() {
     setIsDroneListOpened(true);
     setViewPort((prevViewPort) => ({
       ...prevViewPort,
-      zoom: 15,
       longitude: drone.features[0].geometry.coordinates[0],
       latitude: drone.features[0].geometry.coordinates[1],
     }));

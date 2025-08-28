@@ -33,7 +33,7 @@ export default function DroneMap({
         width: "100%",
         height: "100%",
       }}
-      mapStyle="mapbox://styles/mapbox/dark-v11"
+      mapStyle="mapbox://styles/mapbox/dark-v11?optimize=true"
     >
       {children}
       {selectedDrone && (

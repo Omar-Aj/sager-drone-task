@@ -42,6 +42,7 @@ export default function DroneMapItem({ drone, handleSelectDrone }: PropsType) {
           <Image
             src={canFly ? DroneArrowGreenIcon : DroneArrowRedIcon}
             alt="Drone Arrow Icon"
+            height={16}
           />
         </div>
       </Link>
