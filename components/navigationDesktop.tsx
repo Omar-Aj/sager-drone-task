@@ -5,26 +5,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
-import { DashboardIcon, LocationIcon } from "@/public/icons";
+interface PropsType {
+  navigationLinks: {
+    name: string;
+    href: string;
+    icon: any;
+  }[];
+}
 
-const navigationLinks = [
-  {
-    name: "Dashboard",
-    href: "/",
-    icon: DashboardIcon,
-  },
-  {
-    name: "Map",
-    href: "/map",
-    icon: LocationIcon,
-  },
-];
-
-export default function Sidebar() {
+export default function NavigationDesktop({ navigationLinks }: PropsType) {
   const pathName = usePathname();
 
   return (
-    <div className="flex w-32 shrink-0 flex-col overflow-y-auto">
+    <div className="hidden w-32 shrink-0 flex-col overflow-y-auto md:flex">
       {navigationLinks.map(({ name, href, icon }, index) => {
         const isActive = pathName === href;
 

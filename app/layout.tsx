@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
-import Sidebar from "@/components/sidebar";
+import NavigationMenu from "@/components/navigationMenu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} flex h-svh flex-col antialiased`}>
         <Header />
-        <div className="flex grow overflow-hidden">
-          <Sidebar />
+        <div className="flex grow flex-col-reverse overflow-hidden md:flex-row">
+          <NavigationMenu />
           <div className="grow">{children}</div>
         </div>
       </body>
