@@ -2,16 +2,22 @@ import { ArrowRightIcon, CancelIcon } from "@/public/icons";
 import Image from "next/image";
 import { PropsWithChildren, useState } from "react";
 
-type PropsType = PropsWithChildren;
+interface PropsType extends PropsWithChildren {
+  isDroneListOpened: boolean;
+  setIsDroneListOpened: (isOpen: boolean) => void;
+}
 
-export default function DroneMenu({ children }: PropsType) {
-  const [isDroneListOpen, setIsDroneListOpen] = useState<boolean>(true);
+export default function DroneMenu({
+  isDroneListOpened,
+  setIsDroneListOpened,
+  children,
+}: PropsType) {
   const [droneListTabIndex, setDroneListTabIndex] = useState<number>(0);
 
   return (
     <>
       <div
-        className={`bg-primary absolute bottom-2.5 left-2.5 flex h-80 w-[calc(100%-20px)] flex-col pt-4 md:top-2.5 md:h-[calc(100%-20px)] md:w-[330px] md:pt-8 ${!isDroneListOpen && "hidden"}`}
+        className={`bg-primary absolute bottom-2.5 left-2.5 z-10 flex h-80 w-[calc(100%-20px)] flex-col pt-4 md:top-2.5 md:h-[calc(100%-20px)] md:w-[330px] md:pt-8 ${!isDroneListOpened && "hidden"}`}
       >
         <div className="mb-3 flex shrink-0 justify-between px-4 md:mb-9 md:px-5">
           <h1 className="text-header-color font-bold uppercase md:text-xl">
@@ -19,7 +25,7 @@ export default function DroneMenu({ children }: PropsType) {
           </h1>
           <button
             title="Close Drone List"
-            onClick={() => setIsDroneListOpen(false)}
+            onClick={() => setIsDroneListOpened(false)}
           >
             <Image src={CancelIcon} alt="Close" />
           </button>
@@ -42,9 +48,9 @@ export default function DroneMenu({ children }: PropsType) {
       </div>
 
       <button
-        className={`border-body-color bg-primary absolute top-2.5 left-2.5 m-auto h-10 w-10 rounded-full ${isDroneListOpen ? "hidden" : "flex items-center justify-center"}`}
+        className={`border-body-color bg-primary absolute top-2.5 left-2.5 z-10 m-auto h-10 w-10 rounded-full ${isDroneListOpened ? "hidden" : "flex items-center justify-center"}`}
         title="Open Drone List"
-        onClick={() => setIsDroneListOpen(true)}
+        onClick={() => setIsDroneListOpened(true)}
       >
         <Image src={ArrowRightIcon} alt="Arrow Right" width={24} height={24} />
       </button>
