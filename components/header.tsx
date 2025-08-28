@@ -55,7 +55,7 @@ export default function Header() {
           </p>
           <p
             title="Technical Support"
-            className="text-body-color max-w-48 truncate"
+            className="text-inactive-status max-w-48 truncate"
           >
             Technical Support
           </p>
