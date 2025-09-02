@@ -8,9 +8,25 @@ interface PropsType extends PropsWithChildren {
     zoom: number;
   };
   setViewPort: (viewPort: any) => void;
-  selectedDrone: Drone | null;
-  setSelectedDrone: (drone: Drone | null) => void;
+  selectedDrone: TrackedDrone | null;
+  setSelectedDrone: (drone: TrackedDrone | null) => void;
 }
+
+const formatDuration = (timestamp: number): string => {
+  const now = new Date();
+  const startTime = new Date(timestamp);
+  const diffMs = now.getTime() - startTime.getTime();
+
+  const hours = Math.floor(diffMs / 3_600_000);
+  const minutes = Math.floor((diffMs % 3_600_000) / 60_000);
+  const seconds = Math.floor((diffMs % 60_000) / 1_000);
+
+  const hourString = hours.toString().padStart(2, "0");
+  const minuteString = minutes.toString().padStart(2, "0");
+  const secondString = seconds.toString().padStart(2, "0");
+
+  return `${hourString}:${minuteString}:${secondString}`;
+};
 
 export default function DroneMap({
   children,
@@ -19,8 +35,13 @@ export default function DroneMap({
   selectedDrone,
   setSelectedDrone,
 }: PropsType) {
-  const selectedDroneLong = selectedDrone?.features[0].geometry.coordinates[0];
-  const selectedDroneLat = selectedDrone?.features[0].geometry.coordinates[1];
+  const selectedDroneLong = selectedDrone?.geometry.coordinates[0];
+  const selectedDroneLat = selectedDrone?.geometry.coordinates[1];
+  const selectedDroneName = selectedDrone?.properties.Name;
+  const selectedDroneAltitude = selectedDrone?.properties.altitude;
+  const selectedDroneFlightTime = formatDuration(
+    selectedDrone?.startedFlyingAt || 0,
+  );
 
   return (
     <Map
@@ -46,14 +67,12 @@ export default function DroneMap({
           onClose={() => setSelectedDrone(null)}
           anchor="bottom"
         >
-          <h4 className="mb-2.5 font-bold">
-            {selectedDrone.features[0].properties.Name}
-          </h4>
+          <h4 className="mb-2.5 font-bold">{selectedDroneName}</h4>
           <div className="grid grid-cols-2 justify-items-center text-xs">
             <p>Altitude</p>
             <p>Flight Time</p>
-            <p>{selectedDrone.features[0].properties.altitude}</p>
-            <p>00:25:45</p>
+            <p>{selectedDroneAltitude}</p>
+            <p>{selectedDroneFlightTime}</p>
           </div>
         </Popup>
       )}

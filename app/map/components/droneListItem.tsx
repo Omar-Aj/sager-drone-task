@@ -1,5 +1,5 @@
 interface PropsType {
-  drone: Drone;
+  drone: TrackedDrone;
   isSelected: boolean;
   onClick: () => void;
 }
@@ -9,15 +9,13 @@ export default function DroneListItem({
   isSelected,
   onClick,
 }: PropsType) {
-  const name = drone.features[0].properties.Name;
-  const serial = drone.features[0].properties.serial;
-  const registration = drone.features[0].properties.registration;
-  const pilot = drone.features[0].properties.pilot;
-  const organization = drone.features[0].properties.organization;
+  const name = drone.properties.Name;
+  const serial = drone.properties.serial;
+  const registration = drone.properties.registration;
+  const pilot = drone.properties.pilot;
+  const organization = drone.properties.organization;
 
-  const canFly = drone.features[0].properties.registration
-    .split("-")[1]
-    .startsWith("B");
+  const canFly = drone.properties.registration.split("-")[1].startsWith("B");
 
   return (
     <li

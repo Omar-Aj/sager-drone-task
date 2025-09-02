@@ -1,9 +1,9 @@
 import DroneListItem from "./droneListItem";
 
 interface PropsType {
-  drones: Drone[];
-  selectedDrone: Drone | null;
-  handleSelectDrone: (drone: Drone) => void;
+  drones: TrackedDrone[];
+  selectedDrone: TrackedDrone | null;
+  handleSelectDrone: (drone: TrackedDrone) => void;
 }
 
 export default function DroneList({
